@@ -1,2 +1,0 @@
-# EVA
-EVA Tutorials Excercise
