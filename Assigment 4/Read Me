@@ -1,0 +1,34 @@
+Architectural Basics:
+
+1. The order that I would be thinking to create a most efficient network 
+  a. 3x3 Convolution: I would start from 3x3 Conv to capture the tiny features and gradients
+  b. Number of Kernels: I would decide the number of filters to which I would get edges and gradients
+  c. How many layers: Then I will decide the number of layers that I will have to add to get the output
+  d. Receptive Field: Not all pixels will give me desired output. Hence I will decide the receptive fields to capture the desired features
+  e. MaxPooling: To reduce the number of layers optimally to arrive for an efficient parameters
+  f. 1x1 Convolution: To reduce the dimensionality further I will think of 1x1 
+  g. Position of MaxPooling: Based on the what part of an image to generalise the position of the maxpooling will help
+  h. Batch Normalization: To increase the stability of network I will decide the bact normalisation
+  i. Image Normalization: To tackle the pixel intesity Image Normalisation would be used
+  j. DropOut: To prevent overfitting I would go with Dropout
+  k. The distance of MaxPooling from Prediction: Maxpooling cannot be done just before the prediction layer. Hence I will decide the distance
+  l. Number of Epochs: To reduce the error size I will try to decide optimal number of epochs
+  m. Concept of Transition Layer: To reduce the Parameters optimally
+  n. Position of Transition Layers: where to reduce the number of parameters
+  o. SoftMax: to find the probability 
+  p. When do we introduce DropOut, or when do we know we have some overfitting: when overfitting there then we will introudce dropout. If test accuracy is higher than the train them we can understand over fitting.
+  q. Learning Rate: I will have to reduce the loss gradient. Hence, I want to adjust the weights of network
+  r. Batch Size, and effects of batch size: Number of examples from training datasets to reduce the loss gradient. 
+  s. When to add validation checks: To avoid overfitting and unnecessary computational time. This can be added after each epoch
+  t. LR schedule and concept behind it: Slight change in LR would get stuck the network. Applying the LR for each epoch would give better accuracy.
+  u. Adam vs SGD: Both are gradient decent algorithms. SGD will only work on small subset or random seletion of data. whereas the Adam is Stochastic function which works on the complete data.
+  v. How do we know our network is not going well, comparatively, very early: If it is having less test accuracy and over/underfitting
+  w. The distance of Batch Normalization from Prediction: After looking in to accuracy I would prefer to change the Batch normalisation position from prediction layer to overcome the overfitting.
+  x. When do we stop convolutions and go ahead with a larger kernel or some other alternative: If I am not able to capture or generalise the pixels then stop the convolution and go for bigger kernel
+
+
+
+
+
+
+
