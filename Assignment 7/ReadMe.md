@@ -23,6 +23,5 @@
 
 
 
-#Have given an whirl to implement the Below given ENAS Network in an Enclosed Assignment_7.ipynb File.
-
+#Have given an whirl to implement the ENAS Network in an Enclosed Assignment_7.ipynb File.
 
