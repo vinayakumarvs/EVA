@@ -50,3 +50,16 @@ return model
 6. Model training. DavidNet trains the model with Stochastic Gradient Descent with Nesterov momentum, with a slanted triangular learning rate schedule. Build the learning rate schedule and build the SGD optimizer and model function for TPUEstimator and trained the model. After the slowish initialization and first epoch, each epoch takes around 2.5 seconds. Since there are 24 epochs in total, the total amount of time spent on training is roughly a minute. By evaluating the model on the test set to see the accuracy was most of the time >94%.
 
 ## Reference: https://mc.ai/tutorial-2-94-accuracy-on-cifar10-in-2-minutes/ ##
+
+In an earlier attempt the same network has been trained by David in 79 seconds on a single V100 GPU, comfortably beating the winning multi-GPU time, with plenty of room for improvement. The steps followed are:
+
+1. Baseline: Analysed a baseline and remove a bottleneck in the data loading. (training time: 297s)
+Established a baseline for training a Residual network to 94% test accuracy on CIFAR10, which takes 297s on a single V100 GPU.
+
+2. Mini-batches: We increase the size of mini-batches. Things go faster and don’t break. We investigate how this can be. (training time: 256s)
+3. Regularisation: We remove a speed bump in the code and add some regularisation. Our single GPU is faster than an eight GPU competition winner. (training time: 154s)
+4. Architecture: We search for more efficient network architectures and find a 9 layer network that trains well. (training time: 79s)
+5. Hyperparameters: We develop some heuristics to aid with hyperparameter tuning.
+6. Weight decay: We investigate how weight decay controls the learning rate dynamics.
+7. Batch norm: We learn that batch normalisation protects against covariate shift after all.
+8. Bag of tricks: We uncover many ways to speed things up further when we find ourselves displaced from the top of the leaderboard. (final training time: 26s)
