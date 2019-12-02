@@ -89,8 +89,20 @@ Results on the baseline 35 epoch training schedule are promising with 5/5 runs r
 
 If we accelerate the learning rate schedule to 30 epochs, 4/5 runs reach 94% with a median of 94.13%. We can push the batch size higher to 768 and 4/5 reach 94% with a median of 94.06%. The timings for 30 epoch runs are 161s at batch size 512 and 154s at batch size 768, comfortably beating our target and setting what may be a new speed record for the task of training CIFAR10 to 94% test accuracy, all on a single GPU! For reference, the new 30 epoch learning rate schedule is plotted below. Other hyperparameters (momentum=0.9, weight decay=5e-4) are kept at their values from the original training setup.
 
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/new_learning_rate.svg" width="100%" height="50%" >
+</centre>
+
 
 ## 4. Architecture: We search for more efficient network architectures and find a 9 layer network that trains well. (training time: 79s)
+
+So far, David and team training a fixed network architecture, taken from the fastest single-GPU DAWNBench entry on CIFAR10. With some simple changes, they have reduced the time taken to reach 94% test accuracy from 341s to 154s. Further investigating to alternative architectures they could zero on the below architecture.
+
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/DavidNetArch.png" width="100%" height="50%">
+</centre>
+
+The rate of improvement from training for longer seems slow compared to the improvements achievable by using deeper architectures. This network achieves 93.8% test accuracy in 66s for a 20 epoch run. If we extend training to 24 epochs, 7 out of 10 runs reach 94% with a mean accuracy of 94.08% and training time of 79s!
+
+We have found a 9 layer deep residual network which trains to 94% accuracy in 79s, cutting training time almost in half. One remaining question is did we really need the residual branches to reach 94% test accuracy? The answer to this is a clear no. For example the single branch network Extra:L1+L2+L3 reaches 95% accuracy in 180s with 60 epoch training and extra regularisation (12×12 cutout) and wider versions go higher still. But at least for now the fastest network to 94% is a residual network (which is fortunate given the title of the series.)
 ## 5. Hyperparameters: We develop some heuristics to aid with hyperparameter tuning.
 ## 6. Weight decay: We investigate how weight decay controls the learning rate dynamics.
 ## 7. Batch norm: We learn that batch normalisation protects against covariate shift after all.
