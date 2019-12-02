@@ -29,7 +29,10 @@ train_input_func = lambda params: fw.io.tfrecord_ds(train_fn, parser_train, batc
 eval_input_func = lambda params: fw.io.tfrecord_ds(test_fn, parser_test, batch_size=params['batch_size'], training=False)
 ```
 5. Building ConvNet. Building a ConvNet in Fenwicks isn’t hard — we just keep adding layers to a Sequential model as in the good-old Keras. For DavidNet, things are a bit tricky because the original implementation is in PyTorch. There are some subtle differences between PyTorch and Tensorflow. Most notably, PyTorch’s default way to set the initial, random weights of layers does not have a counterpart in Tensorflow. Fenwicks takes care of that. The ConvNet is as built as follows:
-"https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/DavidNetArch.png"
+
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/DavidNetArch.png" width="100%" height="50%">
+</centre>
+
 ```python
 def build_nn(c=64, weight=0.125):
  model = fw.Sequential()
