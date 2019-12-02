@@ -138,3 +138,4 @@ Their main weapon is statistical significance. The standard deviation in test ac
  8. Exponential moving averages (34s)
  9. Test-time augmentation (26s)
 
+## Reference: https://myrtle.ai/how-to-train-your-resnet/ ##
