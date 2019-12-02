@@ -55,7 +55,8 @@ In an earlier attempt the same network has been trained by David in 79 seconds o
 
 1. Baseline: Analysed a baseline and remove a bottleneck in the data loading. (training time: 297s)
 Established a baseline for training a Residual network to 94% test accuracy on CIFAR10, which takes 297s on a single V100 GPU.
-
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/Artboard-1-5.svg" width="300%" height="50%" >
+</centre>
 2. Mini-batches: We increase the size of mini-batches. Things go faster and don’t break. We investigate how this can be. (training time: 256s)
 3. Regularisation: We remove a speed bump in the code and add some regularisation. Our single GPU is faster than an eight GPU competition winner. (training time: 154s)
 4. Architecture: We search for more efficient network architectures and find a 9 layer network that trains well. (training time: 79s)
