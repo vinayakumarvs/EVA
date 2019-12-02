@@ -105,7 +105,7 @@ The rate of improvement from training for longer seems slow compared to the impr
 We have found a 9 layer deep residual network which trains to 94% accuracy in 79s, cutting training time almost in half. One remaining question is did we really need the residual branches to reach 94% test accuracy? The answer to this is a clear no. For example the single branch network Extra:L1+L2+L3 reaches 95% accuracy in 180s with 60 epoch training and extra regularisation (12×12 cutout) and wider versions go higher still. But at least for now the fastest network to 94% is a residual network.
 ## 5. Hyperparameters: We develop some heuristics to aid with hyperparameter tuning.
 
-| Train Run | Learning Rate (LR) | Momentum (m) | Weight Decay (WD) | (LR * WD) / (1-m) | Test ACC|
+| Train Run | Learning Rate (LR) | Momentum (m) | Weight Decay (WD) | (LR * WD) / (1-m) | Test ACC |
 
 
 
