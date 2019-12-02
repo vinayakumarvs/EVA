@@ -102,7 +102,7 @@ So far, David and team training a fixed network architecture, taken from the fas
 
 The rate of improvement from training for longer seems slow compared to the improvements achievable by using deeper architectures. This network achieves 93.8% test accuracy in 66s for a 20 epoch run. If we extend training to 24 epochs, 7 out of 10 runs reach 94% with a mean accuracy of 94.08% and training time of 79s!
 
-We have found a 9 layer deep residual network which trains to 94% accuracy in 79s, cutting training time almost in half. One remaining question is did we really need the residual branches to reach 94% test accuracy? The answer to this is a clear no. For example the single branch network Extra:L1+L2+L3 reaches 95% accuracy in 180s with 60 epoch training and extra regularisation (12×12 cutout) and wider versions go higher still. But at least for now the fastest network to 94% is a residual network (which is fortunate given the title of the series.)
+We have found a 9 layer deep residual network which trains to 94% accuracy in 79s, cutting training time almost in half. One remaining question is did we really need the residual branches to reach 94% test accuracy? The answer to this is a clear no. For example the single branch network Extra:L1+L2+L3 reaches 95% accuracy in 180s with 60 epoch training and extra regularisation (12×12 cutout) and wider versions go higher still. But at least for now the fastest network to 94% is a residual network.
 ## 5. Hyperparameters: We develop some heuristics to aid with hyperparameter tuning.
 ## 6. Weight decay: We investigate how weight decay controls the learning rate dynamics.
 ## 7. Batch norm: We learn that batch normalisation protects against covariate shift after all.
