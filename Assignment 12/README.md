@@ -53,7 +53,7 @@ return model
 
 In an earlier attempt the same network has been trained by David in 79 seconds on a single V100 GPU, comfortably beating the winning multi-GPU time, with plenty of room for improvement. The steps followed are:
 
-1. Baseline: Analysed a baseline and remove a bottleneck in the data loading. (training time: 297s)
+## 1. Baseline: Analysed a baseline and remove a bottleneck in the data loading. (training time: 297s)
 Established a baseline for training a Residual network to 94% test accuracy on CIFAR10, which takes 297s on a single V100 GPU. The network used in the fastest submission was an 18-layer Residual network, shown below. In this case the number of layers refers to the serial depth of (purple) convolutional and (blue) fully connected layers although the terminology is by no means universal:
 <img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/Artboard-1-5.svg" width="100%" height="50%" >
 </centre>
@@ -63,13 +63,35 @@ A second observation: some of the image preprocessing (padding, normalisation an
 
 A bit more digging reveals that most of the remaining preprocessing time is spent calling out to random number generators to select data augmentations rather than in the augmentations themselves. During a full training run we make several million individual calls to random number generators and by combining these into a small number of bulk calls at the start of each epoch we can shave a further 7s of training time. Finally, at this point it turns out that the overhead of launching even a single process to perform the data augmentation outweighs the benefit and we can save a further 4s by doing the work on the main thread, leading to a final training time of 297s.
 
-2. Mini-batches: Increased the size of mini-batches. Things go faster and don’t break. We investigate how this can be. (training time: 256s)
+## 2. Mini-batches: Increased the size of mini-batches. Things go faster and don’t break. We investigate how this can be. (training time: 256s)
 Further trained the model with batch size 512. Training completes in 256s and with one minor adjustment to the learning rate – increasing it by 10% – enabled to match the training curve of the base runs with batch size 128 and 3/5 runs reach 94% test accuracy. The noisier validation results during training at batch size 512 are expected because of batch norm effects. Larger batches may also be possible with a little care, but for now settled for 512.
 
 In order to train a neural network at high learning rates then there are two regimes to consider. For the current model and dataset, at batch size 128 we are safely in the regime where forgetfulness dominates and we should either focus on methods to reduce this (e.g. using larger models with sparse updates or perhaps natural gradient descent), or we should push batch sizes higher. At batch size 512 we enter the regime where curvature effects dominate and the focus should shift to mitigating these.
-3. Regularisation: We remove a speed bump in the code and add some regularisation. Our single GPU is faster than an eight GPU competition winner. (training time: 154s)
-4. Architecture: We search for more efficient network architectures and find a 9 layer network that trains well. (training time: 79s)
-5. Hyperparameters: We develop some heuristics to aid with hyperparameter tuning.
-6. Weight decay: We investigate how weight decay controls the learning rate dynamics.
-7. Batch norm: We learn that batch normalisation protects against covariate shift after all.
-8. Bag of tricks: We uncover many ways to speed things up further when we find ourselves displaced from the top of the leaderboard. (final training time: 26s)
+
+## 3. Regularisation: We remove a speed bump in the code and add some regularisation. Our single GPU is faster than an eight GPU competition winner. (training time: 154s)
+
+We can get a rough timing profile of our current setup by selectively removing parts of the computation and running the remainder. For example, we can preload random training data onto the GPU to remove data loading and transfer times. We can also remove the optimizer step and the ReLU and batch norm layers to leave just the convolutions. If we do this, we get the following rough breakdown of timings across a range of batch sizes:
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/timing_breakdown.svg" width="100%" height="50%" >
+</centre>
+
+A few things stand out. First, a large chunk of time is being spent on batch norm computations. Secondly, the main convolutional backbone (including pooling layers and pointwise additions) is taking significantly longer than the roughly one second predicted at 100% compute efficiency. Thirdly, the optimizer and dataloader steps don’t seem to be a major bottleneck and are not an immediate focus for optimization.
+
+Quickly the team found the problem with batch norms – the default method of converting a model to half precision in PyTorch (as of version 0.4) triggers a slow code path which doesn’t use the optimized CuDNN routine. They have converted batch norm weights back to single precision then the fast code is triggered and things look much healthier:
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/timing_breakdown_b.svg" width="100%" height="50%" >
+</centre>
+With this improvement in place the time for a 35 epoch training run to 94% accuracy drops to 186s, closing in on target!
+
+Cutting training to 30 epochs, would lead to a 161s finish, easily beating our current target, but simply accelerating the baseline learning rate schedule, leads to 0/5 training runs reaching 94% accuracy.
+
+A simple regularisation scheme that has been shown to be effective on CIFAR10 is so-called Cutout regularisation which consists of zeroing out a random subset of each training image. We try this for random 8×8 square subsets of the training images, in addition to our standard data augmentation of padding, clipping and randomly flipping left-right.
+
+Results on the baseline 35 epoch training schedule are promising with 5/5 runs reaching 94% accuracy and the median run reaching 94.3%, a small improvement over the baseline. A bit of manual optimization of the learning rate schedule (pushing the peak learning rate earlier and replacing the decay phase with a simple linear decay since the final epochs of overfitting don’t seem to help with the extra regularisation in place) brings the median run to 94.5%.
+
+If we accelerate the learning rate schedule to 30 epochs, 4/5 runs reach 94% with a median of 94.13%. We can push the batch size higher to 768 and 4/5 reach 94% with a median of 94.06%. The timings for 30 epoch runs are 161s at batch size 512 and 154s at batch size 768, comfortably beating our target and setting what may be a new speed record for the task of training CIFAR10 to 94% test accuracy, all on a single GPU! For reference, the new 30 epoch learning rate schedule is plotted below. Other hyperparameters (momentum=0.9, weight decay=5e-4) are kept at their values from the original training setup.
+
+
+## 4. Architecture: We search for more efficient network architectures and find a 9 layer network that trains well. (training time: 79s)
+## 5. Hyperparameters: We develop some heuristics to aid with hyperparameter tuning.
+## 6. Weight decay: We investigate how weight decay controls the learning rate dynamics.
+## 7. Batch norm: We learn that batch normalisation protects against covariate shift after all.
+## 8. Bag of tricks: We uncover many ways to speed things up further when we find ourselves displaced from the top of the leaderboard. (final training time: 26s)
