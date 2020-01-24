@@ -1,4 +1,9 @@
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)(https://colab.research.google.com/github/vinayakumarvs/EVA/blob/master/Assignment%2014/Assignment_14.ipynb)
+
+
+
+
 # Model Training Logs
 ```
 WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow_core/python/autograph/converters/directives.py:119: The name tf.FixedLenFeature is deprecated. Please use tf.io.FixedLenFeature instead.
