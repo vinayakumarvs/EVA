@@ -65,5 +65,4 @@ epoch: 24 lr: 0.0 train loss: 0.05436177185058594 train acc: 0.98338 val loss: 0
 
 ### Training Graphs:
 
-![attractive demo](/tutorials/tagger/simple_demo.png)
-!(/vinayakumarvs/EVA/blob/master/Assignment 14/Training_Image.png)
+![Training Graph](/vinayakumarvs/EVA/Assignment 14/Training_Image.png)
