@@ -72,3 +72,6 @@ epoch: 24 lr: 0.0 train loss: 0.05436177185058594 train acc: 0.98338 val loss: 0
 ### Training Graphs:
 <img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2014/Training_Image.png" width="100%" height="50%">
 
+### Team Members:
+1. Ravi Venkata Ravada
+
