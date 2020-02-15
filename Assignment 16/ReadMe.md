@@ -4,8 +4,7 @@
 
 #### Below is the output uploaded in YouTube: 
 
-https://youtu.be/yXJYVdOXVrc
-
+https://youtu.be/7Ddtry3u7b0
 
 ***References:
 1. https://medium.com/@today.rafi/train-your-own-tiny-yolo-v3-on-google-colaboratory-with-the-custom-dataset-2e35db02bf8f
