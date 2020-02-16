@@ -5,7 +5,6 @@
 #### Below is the output uploaded in YouTube: 
 
 https://youtu.be/7Ddtry3u7b0
-<video src="https://youtu.be/7Ddtry3u7b0" width="320" height="200" controls preload></video>
 
 
 
