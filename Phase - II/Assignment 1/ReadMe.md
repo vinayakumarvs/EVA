@@ -16,7 +16,9 @@
     
     b. On Non Tokenised IMDB Data and Tokensize using the GloVe Embeddings
     
-    Results are 
+    Results are:
+    <img src="https://github.com/vinayakumarvs/EVA/blob/master/Assignment%2012/timing_breakdown.svg" width="100%" height="50%" >
+</centre>
     
       By Not Tokenising with GloVe Embeddings
       
