@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/weiji14/deepbedmap/]
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/Phase-II%20Assignment-01.ipynb)
 
 # Deep Learning for Text
 
