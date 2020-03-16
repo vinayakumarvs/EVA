@@ -28,7 +28,7 @@
     Accuracy Achieved is ~69%
     
     
-      2. Implement by Not using Tokenised with GloVe Embeddings
+      2. Implementation by Not using Tokenised with GloVe Embeddings
       
       Results are
       
