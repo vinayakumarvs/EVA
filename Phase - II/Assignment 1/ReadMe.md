@@ -14,7 +14,16 @@
 
     a. On Keras builtid IMDB data which is Pre Tokenised
     
-    b. On Non Tokenised [IMDB](http://s3.amazonaws.com/text-datasets/aclImdb.zip) Data  
+    b. On Non Tokenised IMDB Data and Tokensize using the GloVe Embeddings
+    
+    Results are 
+    
+      By Not Tokenising with GloVe Embeddings
+      
+      Results are
+      
+      
+      
     
 
 
