@@ -41,4 +41,5 @@
 
 
       
-#### Reference: Materials/Deep Learning with Python - https://github.com/vinayakumarvs/EVA/blob/master/Materials/Deep%20Learning%20with%20Python.pdf
+#### Reference: 
+***1.*** Materials/Deep Learning with Python - https://github.com/vinayakumarvs/EVA/blob/master/Materials/Deep%20Learning%20with%20Python.pdf
