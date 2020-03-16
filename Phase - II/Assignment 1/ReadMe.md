@@ -16,7 +16,8 @@
 
     a. On Keras builtid IMDB data which is Pre Tokenised
     
-    b. On Non Tokenised IMDB Data and Tokensize using the GloVe Embeddings
+    b. 
+        1. On Non Tokenised IMDB Data and Tokensize using the GloVe Embeddings
     
     Results are:
 
@@ -27,7 +28,7 @@
     Accuracy Achieved is ~69%
     
     
-      By Not Tokenising with GloVe Embeddings
+      2. Implement by Not using Tokenised with GloVe Embeddings
       
       Results are
       
