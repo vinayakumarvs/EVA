@@ -21,11 +21,8 @@
     Results are:
 
 
-<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/TrainAccuracy.png" width="100%" height="50%">
-</centre>
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/TrainAccuracy.png" width="50%" height="50%"><img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/LossAccuracy.png" width="50%" height="50%">
 
-<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/LossAccuracy.png" width="100%" height="50%">
-</centre>
     
     Accuracy Achieved is ~69%
     
@@ -34,10 +31,7 @@
       
       Results are
       
-<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/TrainAccuracyWithoutPreTrain.png" width="100%" height="50%">
-</centre>
-
-<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/LossAccuracyWithoutPreTrain.png" width="100%" height="50%">
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/TrainAccuracyWithoutPreTrain.png" width="50%" height="50%"><img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/LossAccuracyWithoutPreTrain.png" width="50%" height="50%">
 </centre>
 
      Accuracy Achieved is ~81%
