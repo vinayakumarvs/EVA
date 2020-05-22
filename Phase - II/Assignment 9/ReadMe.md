@@ -48,6 +48,8 @@ An experience (aka transition) is defined by the following:
 Agent playing in an environment randomly and the experience of these movements stored in replay buffer memory. While training these batch of experiences sampled to train an agent. The memory is being replaced with the new experiences and deletes the old one to accommodate in a specified memory.
 
 
+We will define a sample function as below, during training this becomes our dataset. Here we randomly sample a batch of experiences and use that as model inputs and for loss calculations.
+
 <img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/Step1.png" width="60%" height="50%">
 
 ``` python
