@@ -92,3 +92,7 @@ Note: An environment also provides done variable to alert if an episode is done 
 
 ##### ***6.*** From the next state s' the Actor target plays the next action a'
 An actor network predicts next action for an agent to take from current state. This is the step agent performs in an environment and is visible on the game/environment screen. The resulting state and reward is all stored as a new experience in the replay memory. This step is just to proceed the agent in the game/environment and to add entry in the replay memory.
+
+##### ***7.*** Add Guassian noise to the next action a' and put the values in a range of values supported by an environment.
+
+This is to avoid two large actions played from disturbing the state of the environment. The Gaussian noise we're adding is an example of a technique for exploration of the environment. We're adding bias into the action in order to allow the agent to explore different actions.
