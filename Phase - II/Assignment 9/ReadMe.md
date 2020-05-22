@@ -28,10 +28,14 @@ This can be overcome by more advanced algorithms such as Deep Q-Networks(DQNs) w
 Deep Deterministic Policy Gradient(DDPG) is a model-free, off-policy, actor-critic algorithm that tackles this problem by learning policies in high dimensional, continuous action spaces. The figure below is a representation of actor-critic architecture.
 
 ###### Let’s understand the T3D step by step :
-1.	Import Required Libraries. Few important Libraries are
 
-  a.	https://pytorch.org: We use PyTorch for our neural network implementation
-  b.	Gym: This provides a variety of environments like Atari, MuJoCo, etc for our reinforcement learning experiments
-  c.	https://github.com/benelot/pybullet-gym: Library providing physics based environment for our experiment
-  
-2.	Initialize the Experience Replay Memory, with a fixed size (i.e. 1000000 in this exercise). We will populate it with each new transition
+### ***1.*** Import Required Libraries. Few important Libraries are
+    a. https://pytorch.org: We use PyTorch for our neural network implementation
+    
+    b. Gym: This provides a variety of environments like Atari, MuJoCo, etc for our reinforcement learning experiments
+    
+    c. https://github.com/benelot/pybullet-gym: Library providing physics based environment for our experiment
+    
+### ***2.*** Initialize the Experience Replay Memory, with a fixed size (i.e. 1000000 in this exercise). We will populate it with each new transition
+
+
