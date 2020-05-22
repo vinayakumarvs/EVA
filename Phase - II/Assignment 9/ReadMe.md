@@ -83,6 +83,8 @@ We start by building the Actor targets, which outputs the Actions for the Critic
 <img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/T3D.png" width="60%" height="50%">        
 
 
+
 Sample a batch of transitions (s, s', a, r) from memory.
 
 In the implementation, we're going to use 100 batches. The following steps will be done to each transition from the batch (s, s', a, r).
+##### ***5.*** 
