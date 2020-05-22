@@ -89,3 +89,6 @@ In each training iteration, as and when we sample batch of experiences from repl
 In the implementation, we're going to use 100 batches with random sampling from the replay buffer memory. The following steps will be done to each transition from the batch (s, s', a, r).
 
 Note: An environment also provides done variable to alert if an episode is done or not.
+
+##### ***6.*** From the next state s' the Actor target plays the next action a'
+An actor network predicts next action for an agent to take from current state. This is the step agent performs in an environment and is visible on the game/environment screen. The resulting state and reward is all stored as a new experience in the replay memory. This step is just to proceed the agent in the game/environment and to add entry in the replay memory.
