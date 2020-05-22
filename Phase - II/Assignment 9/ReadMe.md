@@ -38,4 +38,11 @@ Deep Deterministic Policy Gradient(DDPG) is a model-free, off-policy, actor-crit
     
 ##### ***2.*** Initialize the Experience Replay Memory, with a fixed size (i.e. 1000000 in this exercise). We will populate it with each new transition
 
+An experience (aka transition) is defined by the following:
 
+    a. s: current state of an agent
+    b. a: agent’s next action to go to next state
+    c. s': new state of an agent reaches after taking an action (a)
+    d. r: reward an agent receive for going from state (s) to state (s') by taking action (a)
+
+Agent playing in an environment randomly and the experience of these movements stored in replay buffer memory. While training these batch of experiences sampled to train an agent. The memory is being replaced with the new experiences and deletes the old one to accommodate in a specified memory.
