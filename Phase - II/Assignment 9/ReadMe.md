@@ -96,3 +96,10 @@ An actor network predicts next action for an agent to take from current state. T
 ##### ***7.*** Add Guassian noise to the next action a' and put the values in a range of values supported by an environment.
 
 This is to avoid two large actions played from disturbing the state of the environment. The Gaussian noise we're adding is an example of a technique for exploration of the environment. We're adding bias into the action in order to allow the agent to explore different actions.
+
+##### ***8.*** The two Critic targets each takes the couple (s', a') as input and returns two Q-values: Qt1(s′,a′) and Qt2(s′,a′)
+
+##### ***9.*** keep the minimum of the Q-values: min(Qt1,Qt2) - this is the approximated value of the next state.
+
+    * Taking the minimum of the two Q-value estimates prevents overly optimistic estimates of the value state, as this was one of the issues with the classic Actor-Critic method.
+    * This allows us to stabilize the optimization of the Q-learning training process.
