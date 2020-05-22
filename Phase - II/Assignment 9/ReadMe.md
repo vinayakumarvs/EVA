@@ -60,4 +60,29 @@ We will define a sample function as below, during training this becomes our data
                 np.array(batch_actions), np.array(batch_rewards).reshape(-1, 1), \
                 np.array(batch_dones).reshape(-1, 1)
 ```
-##### ***2.*** Define DNN for the Actor model and one for Actor Target
+##### ***2.*** Build one neural network for the Actor model and one for the Actor target
+
+The Actor target is initialized the same as the Actor model, and the weights will be updated over the iterations return optimal actions.
+build two neural networks for the Critic models and two for the Critic targets.
+
+##### ***3.*** Build two neural networks for the Critic models and two for the Critic targets.
+
+In total, we have 2 Actor neural networks and 4 Critic neural networks.
+The Actors are learning the Policy, and the Critics are learning the Q-values.
+Here's an overview of the training process of these neural networks:
+
+Actor target -> Critic target -> Critic target -> Critic model -> Critic model -> Actor model
+
+We start by building the Actor targets, which outputs the Actions for the Critic target, which leads to the Critic model, and finally, the Actor model gets its weights updated through gradient ascent.
+### We will look in to train the Model
+##### ***4.*** We will perform the necessary actions in this step.
+    1. Selecting the GPU or CPU
+    2. Build the complete training process in to class. This will perform 
+        a. Consider State dimensions, action dimensions and max action to perform Gradient decent, Polyak Average and optimiser
+        
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/T3D.png" width="60%" height="50%">        
+
+
+Sample a batch of transitions (s, s', a, r) from memory.
+
+In the implementation, we're going to use 100 batches. The following steps will be done to each transition from the batch (s, s', a, r).
