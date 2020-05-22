@@ -16,3 +16,5 @@ Markov Decision Processes(MDPs) are mathematical frameworks to describe an envir
 
 Q-learning is a commonly used model-free approach which can be used for building a self-playing agent. It revolves around the notion of updating Q values which denotes value of performing action a in state s. The following value update rule is the core of the Q-learning algorithm.
 
+
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/TrainAccuracy.png" width="50%" height="50%"><img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%201/ResultsGraph/LossAccuracy.png" width="50%" height="50%">
