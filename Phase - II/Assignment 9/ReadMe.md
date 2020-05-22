@@ -29,14 +29,7 @@ Deep Deterministic Policy Gradient(DDPG) is a model-free, off-policy, actor-crit
 
 ###### Let’s understand the T3D step by step :
 
-##### ***1.*** Import Required Libraries. Few important Libraries are
-    a. https://pytorch.org: We use PyTorch for our neural network implementation
-    
-    b. Gym: This provides a variety of environments like Atari, MuJoCo, etc for our reinforcement learning experiments
-    
-    c. https://github.com/benelot/pybullet-gym: Library providing physics based environment for our experiment
-    
-##### ***2.*** Initialize the Experience Replay Memory, with a fixed size (i.e. 1000000 in this exercise). We will populate it with each new transition
+##### ***1.*** Initialize the Experience Replay Memory, with a fixed size (i.e. 1000000 in this exercise). We will populate it with each new transition
 
 An experience (aka transition) is defined by the following:
 
@@ -67,3 +60,4 @@ We will define a sample function as below, during training this becomes our data
                 np.array(batch_actions), np.array(batch_rewards).reshape(-1, 1), \
                 np.array(batch_dones).reshape(-1, 1)
 ```
+##### ***2.*** Define DNN for the Actor model and one for Actor Target
