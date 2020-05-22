@@ -124,4 +124,4 @@ CriticLoss=MSELoss(Q1(s,a),Qt)+MSELoss(Q2(s,a),Qt)
     * We now want to reduce the Critic loss by updating the parameters of the two Critic models over the iterations with backpropagation. We update the weights with stochastic gradient descent with the use of an Adam optimizer.
     * The Q-learning part of the training process is now done, and now we're going to move on to policy learning.
     
-<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/T3D-Train-Order.png" width="60%" height="50%"> 
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/T3D-PolyakAvg.png" width="60%" height="50%"> 
