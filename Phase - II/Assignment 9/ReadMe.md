@@ -103,3 +103,8 @@ This is to avoid two large actions played from disturbing the state of the envir
 
     * Taking the minimum of the two Q-value estimates prevents overly optimistic estimates of the value state, as this was one of the issues with the classic Actor-Critic method.
     * This allows us to stabilize the optimization of the Q-learning training process.
+
+##### ***10.*** we use min(Qt1,Qt2) to get the final target of the two Critic models:
+
+The formula for this is Qt=r+γ∗(min(Qt1,Qt2)), where γ is the discount factor and r is reward
+
