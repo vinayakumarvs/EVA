@@ -108,3 +108,13 @@ This is to avoid two large actions played from disturbing the state of the envir
 
 The formula for this is Qt=r+γ∗(min(Qt1,Qt2)), where γ is the discount factor and r is reward
 
+##### ***11.*** The two Critic models take the couple (s, a) as input and return two Q-values as ouptuts.
+
+We now compare the minimum Critic target and compare it to the two Q-values from the Critic models: Q1(s,a) and Q2(s,a)
+
+##### ***12.*** Compute the loss between the two Critic models
+
+The Critic Loss is the sum of the two losses: 
+CriticLoss=MSELoss(Q1(s,a),Qt)+MSELoss(Q2(s,a),Qt)
+
+##### ***13.*** Backpropagate the Critic loss and update the Critic models parameters.
