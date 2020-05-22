@@ -125,3 +125,41 @@ CriticLoss=MSELoss(Q1(s,a),Qt)+MSELoss(Q2(s,a),Qt)
     * The Q-learning part of the training process is now done, and now we're going to move on to policy learning.
     
 <img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/T3D-PolyakAvg.png" width="60%" height="50%"> 
+
+### Policy Learning Steps
+The ultimate goal of the policy learning part of TD3 is to find the optimal parameters of the Actor model (our main policy), in order to perform the optimal actions in each state which will maximize the expected return.
+
+We know that we don't have an explicit formula for the expected return, instead we have a Q-value which is positively correlated with the expected return.
+
+The Q-value is an approximation and the more you increase this value, the closer you get to the optimal expected return.
+
+We're going to use the Q-values from the Critic models to perform gradient ascent by differentiating their output with respect to the weights of the Actor model.
+
+As we update the weights of our Actor model in the direction that increases the Q-value, our agent (or policy) will return better actions that increase the Q-value of the state-action pair, and also get the agent closer to the optimal return.
+
+##### ***14.*** For every 2 iterations we update the Actor model by performing gradient ascent on the output of the first Critic model.
+
+Now the models that haven't been updated yet are the Actor and Critic targets, which leads to the next steps.
+
+##### ***15.*** For every 2 iterations we update the weights of the Actor target with polyak averaging.
+
+Polyak averaging means that the parameters of the Actor target θ′i are updated by the sum of tao * theta, where tao is a very small number and theta is the parameters of the Actor model.
+The other part is (1−τ)θ′i, where θ′i is the parameters of the Actor target before the update:
+    θ′i ← τθi+(1−τ)θ′i
+    
+This equation represents a slight transfer of weights from the Actor model to the Actor target. This makes the Actor target get closer and closer to the Actor model with each iteration.
+
+This gives time to the Actor model to learn from the Actor target, which stabilizes the overall learning process.
+
+##### ***16.*** Once every two iterations we update the weights of the Critic target with polyak averaging.
+
+The equation for updating the weights is the same here:
+    θ′i ← τθi+(1−τ)θ′i
+    
+The one step that we haven't covered yet is the delayed part of the algorithm.
+
+The delayed part of the model comes from the fact that we're updating the Actor and the Critic once every two iterations. This is a trick to improve performance with respect to the classical version of DDPG.
+
+
+
+Reference: https://www.mlq.ai/deep-reinforcement-learning-twin-delayed-ddpg-algorithm/
