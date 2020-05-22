@@ -46,3 +46,6 @@ An experience (aka transition) is defined by the following:
     d. r: reward an agent receive for going from state (s) to state (s') by taking action (a)
 
 Agent playing in an environment randomly and the experience of these movements stored in replay buffer memory. While training these batch of experiences sampled to train an agent. The memory is being replaced with the new experiences and deletes the old one to accommodate in a specified memory.
+
+
+<img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/Step1.png" width="60%" height="50%">
