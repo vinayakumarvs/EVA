@@ -82,9 +82,10 @@ We start by building the Actor targets, which outputs the Actions for the Critic
         
 <img src="https://github.com/vinayakumarvs/EVA/blob/master/Phase%20-%20II/Assignment%209/Images/T3D.png" width="60%" height="50%">        
 
+In each training iteration, as and when we sample batch of experiences from replay memory, our agent needs to take an action during that iteration. This is part of online training. The action which agent takes is selected by calling select_action. Agent's current state is passed to Actor model to get next action. This way agent is getting trained as well simultaneously performing action.
 
+##### ***5.*** sample a batch of transitions (s, s', a, r) from memory.
 
-Sample a batch of transitions (s, s', a, r) from memory.
+In the implementation, we're going to use 100 batches with random sampling from the replay buffer memory. The following steps will be done to each transition from the batch (s, s', a, r).
 
-In the implementation, we're going to use 100 batches. The following steps will be done to each transition from the batch (s, s', a, r).
-##### ***5.*** 
+Note: An environment also provides done variable to alert if an episode is done or not.
